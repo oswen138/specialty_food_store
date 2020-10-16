@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.column(:content_body, :string)
       t.column(:rating, :integer)
       t.column(:product_id, :integer)
+
     end
   end
 end
