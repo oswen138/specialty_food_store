@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  validates :name, :cost, :country_of_origin, presence: true
+  validates_length_of :name, maximum: 100
   has_many :reviews, dependent: :destroy
 
   before_save(:titleize_product)
