@@ -1,14 +1,8 @@
 class Product < ApplicationRecord
+  around_save(:titleize_product)
   validates :name, :cost, :country_of_origin, presence: true
   validates_length_of :name, maximum: 100
   has_many :reviews, dependent: :destroy
-
-  before_save(:titleize_product)
-
-  private
-    def titleize_product
-      self.name = self.name.titleize
-    end
 
   scope :three_most_recent, -> { order(created_at: :desc).limit(3)}
 
@@ -19,4 +13,11 @@ class Product < ApplicationRecord
     .order("reviews_count DESC")
     .limit(250)
     )}
+
+    def titleize_product
+      self.name = self.name.titleize
+    end
 end
+
+
+
