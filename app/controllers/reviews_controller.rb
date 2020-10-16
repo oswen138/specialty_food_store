@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-  before_action :authorize, only: [:new]
   def new
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new
@@ -35,8 +34,10 @@ class ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      flash[:notice] = "Review successfully updated!"
       redirect_to product_path(@product)
     else
+      flash[:alert] = "Unable to update review, see error"
       render :edit
     end
   end
@@ -45,6 +46,7 @@ class ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     @review.destroy
+    flash[:notice] = "Review successfully removed!"
     redirect_to product_path(@product)
   end
 
@@ -52,4 +54,5 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:author, :content_body, :rating)
   end
+
 end

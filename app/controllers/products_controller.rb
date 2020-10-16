@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
       flash[:notice] = "Product successfully added!"
       redirect_to products_path
     else
+      flash[:alert] = "Unable to add product, see error"
       render :new
   end
 
@@ -32,14 +33,17 @@ class ProductsController < ApplicationController
   def update
     @product= Product.find(params[:id])
     if @product.update(product_params)
+      flash[:notice] = "Product successfully updated!"
       redirect_to products_path
     else
+      flash[:alert] = "Unable to update product, see error"
       render :edit
   end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
+    flash[:notice] = "Product successfully removed!"
     redirect_to products_path
   end
 
@@ -47,7 +51,6 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :cost, :country_of_origin)
     end
-
-    end
-  end 
+  end
+end
 end
