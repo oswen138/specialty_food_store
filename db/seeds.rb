@@ -7,25 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 Product.destroy_all
+
+50.times do |index|
+  Product.create!(name: Faker::Food.vegetable,
+                        cost: Faker::Number.between(1, 30),
+                        country_of_origin: "USA")
+                        image_url: "site.com/here_is_a_picture_of_cardamom.jpg")
+end
+
+p "Created #{Product.count} products"
+
+
 Review.destroy_all
 
 50.times do |index|
-  @product = Product.new(:name => Faker::Food.dish, :cost => Faker::Number.between(1,15), :country_of_origin =>'USA')
-  if @product[:cost] > 8
-    @product[:country_of_origin] = 'France'
-  end
-  @product.save!
-  5.times do |z|
-    @review = Review.create!(:author => Faker::FamilyGuy.character, :content_body => Faker::Lorem.characters(100), :rating => Faker::Number.between(1,5), :product_id =>  @product.id)
-  end
+  Review.create!(author: Faker::LuLu.writer,
+                        content_body: Faker::Lorem.sentence.between(50, 250).chop,
+                        rating: Faker::Number.between(1,5)
+                        product_id: @product_id
 end
 
-
-
-Your site should include validations for the following:
-
-All fields should be filled out, including rating.
-Rating can only be an integer between 1 and 5.
-The review's content_body must be between 50 and 250 characters.
-Callbacks
+p "Created #{Review.count} reviews"
