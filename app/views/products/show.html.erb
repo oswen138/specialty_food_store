@@ -1,7 +1,9 @@
 <h1><%= @product.name %></h1>
 <h3>From <%= @product.country_of_origin %></h3>
+
 <% if @product.reviews.any? %>
 <p>Product Reviews</p>
+
   <ul>
     <% @product.reviews.each do |review| %>
       <li><%= review.author %> - <%= review.content_body %> |
@@ -15,10 +17,10 @@
   <p>No reviews yet</p>
 <% end %>
 
-<p><%= link_to "Add new review", new_product_review_path(@product) %></p>
+<p><%= link_to "Add a new review", new_product_review_path(@product) %></p>
 <p><%= link_to "Edit Product", edit_product_path(@product) %></p>
-<p><%= link_to "Return to Products", products_path %></p>
-<p><%= link_to "Delete", product_path(@product),
+<p><%= link_to "Delete Product", product_path(@product),
 :data => {:confirm => "Are you sure?",
   :method => "delete"} %>
 </p>
+<p><%= link_to "Return to Product List", products_path %></p>
