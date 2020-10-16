@@ -1,4 +1,4 @@
-class AlbumsController < ApplicationController
+class ProductsController < ApplicationController
 
   def index
     @products = Product.all
@@ -48,4 +48,6 @@ class AlbumsController < ApplicationController
       params.require(:product).permit(:name, :cost, :country_of_origin)
     end
 
+    end
+  end 
 end
