@@ -16,6 +16,7 @@ This site has the functionality to review products and allows users to have CRUD
 4. Run tests in the command line with rspec
 5. Migrate database info with $ rake db:migrate
 6. Seed with $ rake db:seed
+7. View site with rails s
 
 ## Known Bugs
 * No known bugs at this time.
