@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     else
       flash[:alert] = "Unable to add product, see error"
       render :new
+    end
   end
 
   def edit
@@ -38,7 +39,9 @@ class ProductsController < ApplicationController
     else
       flash[:alert] = "Unable to update product, see error"
       render :edit
+    end
   end
+
 
   def destroy
     @product = Product.find(params[:id])
@@ -51,6 +54,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :cost, :country_of_origin)
     end
-  end
-end
+
 end

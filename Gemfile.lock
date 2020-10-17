@@ -232,7 +232,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
-  bootstrap-sass (~> 3.4.1)
+  bootstrap-sass
   byebug
   capybara
   faker
@@ -246,6 +246,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.4)
   rspec-rails
   sass-rails (>= 6)
+  sassc-rails
   shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)

@@ -14,7 +14,6 @@ Product.destroy_all
   Product.create!(name: Faker::Food.vegetable,
                         cost: Faker::Number.between(1, 30),
                         country_of_origin: "USA")
-                        image_url: "site.com/here_is_a_picture_of_cardamom.jpg")
 end
 
 p "Created #{Product.count} products"
