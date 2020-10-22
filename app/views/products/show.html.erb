@@ -1,8 +1,6 @@
 <h1>Product name:<%= @product.name %></h1>
 <h3>Country of origin: <%= @product.country_of_origin %></h3>
 
-<p><%= link_to "Add a new review", new_product_review_path(@product) %></p>
-
 <% if @product.reviews.any? %>
 <p>Product Reviews</p>
 

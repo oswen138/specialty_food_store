@@ -8,13 +8,19 @@
 
 
 Product.destroy_all
+Review.destroy_all
 
 50.times do |index|
-  Product.create!(content_body: Faker::Lorem.sentence(250, false, 50).chop,
+  product = Product.create!(content_body: Faker::Lorem.sentence(250, false, 50).chop,
                  name: Faker::Name.name,
                  cost: Faker::Number.between(1, 30),
                  rating: Faker::Number.between(1,5))
   
 end
 
-p "Created #{Product.count} products"
+
+250.times do |index|
+  product_random_id = Product.all.ids.sample
+  review = Review.create!(author: Faker::Movies::Lebowski.character, content: Faker::Hipster.paragraph_by_chars(characters: 150, supplemental: false), rating: rand(6), product_id: product_random_id)
+end
+
