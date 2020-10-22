@@ -9,7 +9,7 @@ end
 
 describe Product do
   it("titleizes the name of an product") do
-    product = Product.create({name: "broccoli", country_of_origin: "italy"})
+    product = Product.create({name: "broccoli", country_of_origin: "italy", cost: 500})
     expect(product.name()).to(eq("Broccoli"))
   end
 end

@@ -7,25 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
 Product.destroy_all
 
 50.times do |index|
-  Product.create!(name: Faker::Food.vegetable,
-                        cost: Faker::Number.between(1, 30),
-                        country_of_origin: "USA")
+  Product.create!(content_body: Faker::Lorem.sentence(250, false, 50).chop,
+                 name: Faker::Name.name,
+                 cost: Faker::Number.between(1, 30),
+                 rating: Faker::Number.between(1,5))
+  
 end
 
 p "Created #{Product.count} products"
-
-
-Review.destroy_all
-
-50.times do |index|
-  Review.create!(author: Faker::LuLu.writer,
-                        content_body: Faker::Lorem.sentence.between(50, 250).chop,
-                        rating: Faker::Number.between(1,5)
-                        product_id: @product_id
-end
-
-p "Created #{Review.count} reviews"
