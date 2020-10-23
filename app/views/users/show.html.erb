@@ -1,8 +1,0 @@
-<h1><%= @user.full_name %></h1>
-<p><strong><Admin:</strong> <%= @user.admin? %></p>
-
-<h2>Review</h2>
-<p><%= @user.review %></p>
-
-<% if current_user.id == @user.id %>
-  <%= link_to 'Edit my review', edit_user_path(current_user), class: 'btn btn-primary' %>
