@@ -2,3 +2,8 @@
 <p>Sign in to view and review products</p>
 
 
+<img src="/specialty_food_store/app/assets/images/food background.JPG" class="img-fluid" alt="Responsive image">
+
+<% if user_signed_in? %>
+  <%= render 'reviews/review_form' %>
+<% end %>
