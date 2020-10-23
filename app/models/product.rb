@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   before_save(:titleize_product)
   private
     def titleize_product
-      self.name = self.name.titlelize
+      self.name = self.name.titlecase
     end
 end
 
