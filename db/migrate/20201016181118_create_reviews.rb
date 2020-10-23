@@ -6,6 +6,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.column(:rating, :integer)
       t.column(:product_id, :integer)
 
+      t.timestamps()
     end
   end
 end

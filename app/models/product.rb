@@ -15,11 +15,11 @@ class Product < ApplicationRecord
     .limit(250)
     )}
     
-    before_save(:titleize_product)
 
+  before_save(:titleize_product)
   private
     def titleize_product
-      self.name = self.name.titleize
+      self.name = self.name.titlelize
     end
 end
 

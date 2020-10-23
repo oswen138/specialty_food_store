@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     render :show
   end
@@ -34,11 +34,10 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     if @review.update(review_params)
       flash[:notice] = "Review successfully updated!"
-      redirect_to product_path(@product)
+      redirect_to product_path(@review.product)
     else
       flash[:alert] = "Unable to update review, see error"
       render :edit
@@ -46,11 +45,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     @review.destroy
     flash[:notice] = "Review successfully removed!"
-    redirect_to product_path(@product)
+    redirect_to product_path(@review.product)
   end
 
   private

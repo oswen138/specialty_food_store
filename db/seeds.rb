@@ -11,18 +11,19 @@ Product.destroy_all
 Review.destroy_all
 
 50.times do |index|
-  product = Product.create!(content_body: Faker::Lorem.sentence(250, false, 50).chop,
+  product = Product.create!(content_body: Faker::Lorem.sentence(word_count: 250, false, 50).chop,
                  name: Faker::Name.name,
-                 cost: Faker::Number.between(1, 30),
-                 rating: Faker::Number.between(1,5))
+                 cost: Faker::Number.rand(1..30),
+                 rating: Faker::Number.rand(1..5),
+                 country_of_origin: Faker::Address.country)
   
 end
-fghjkjl
 
-50.times do |index|
+250.times do |index|
   Review.create!(author: Faker::LuLu.writer,
-                        content_body: Faker::Lorem.sentence.between(50, 250).chop,
-                        rating: Faker::Number.between(1,5),
-                        product_id: @product_id)
+                        content_body: Faker::Lorem.sentence.rand(50..250).chop,
+                        rating: Faker::Number.rand(1..5),
+                        product_id: product_id)
 end
 
+p "Created #{Product.count} products and #{Review.count} reviews"
