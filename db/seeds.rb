@@ -17,10 +17,12 @@ Review.destroy_all
                  rating: Faker::Number.between(1,5))
   
 end
+fghjkjl
 
-
-250.times do |index|
-  product_random_id = Product.all.ids.sample
-  review = Review.create!(author: Faker::Movies::Lebowski.character, content: Faker::Hipster.paragraph_by_chars(characters: 150, supplemental: false), rating: rand(6), product_id: product_random_id)
+50.times do |index|
+  Review.create!(author: Faker::LuLu.writer,
+                        content_body: Faker::Lorem.sentence.between(50, 250).chop,
+                        rating: Faker::Number.between(1,5),
+                        product_id: @product_id)
 end
 
