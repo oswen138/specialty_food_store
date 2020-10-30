@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
   devise_for :users
   root to: 'home#index'
-
+  resources :products do
+    resources :reviews
+  end
 end
-#   root to: 'products#index'
-#   resources :products do
-#     resources :reviews
-#   end
-# end
