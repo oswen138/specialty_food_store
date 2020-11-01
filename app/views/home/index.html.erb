@@ -2,8 +2,12 @@
 <p>Sign in to view and review products</p>
 
 
-<img src="/specialty_food_store/app/assets/images/food background.JPG" class="img-fluid" alt="Responsive image">
-
-<% if user_signed_in? %>
+<% if current_user && current_user.admin %>
 <p><%= link_to "Create new product", products_path %></p>
+<% end %>
+<% if @reviewed_product.any? %>
+    <h3> Check out our <em>Most Reviewed Product: </em></h3>
+    <ul>
+      <li><%= link_to @reviewed_product.first.name, product_path(@reviewed_product.first)  %></li>
+    </ul>
 <% end %>

@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
-  before_action :authorize, only: [:new]
-
+  load_and_authorize_resource :except => [:create, :new]
+  
   def new
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new
@@ -19,10 +19,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def index
-    @products = Product.all
-  end
-
   def show
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
@@ -32,7 +28,7 @@ class ReviewsController < ApplicationController
   def edit
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
-    render :edit
+    redirect_to product_path(@product)
   end
 
   def update
@@ -53,7 +49,7 @@ class ReviewsController < ApplicationController
     redirect_to product_path(@review.product)
   end
 
-  private
+private
   def review_params
     params.require(:review).permit(:author, :content_body, :rating)
   end

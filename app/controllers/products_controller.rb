@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource :except => :create
 
   def index
     @products = Product.all
@@ -54,5 +55,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :cost, :country_of_origin)
     end
-
+    
 end
